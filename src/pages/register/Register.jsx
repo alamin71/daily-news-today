@@ -1,15 +1,34 @@
+import { useContext } from "react";
 import Navbar from "../shared/navbar/Navbar";
 import { Link } from "react-router-dom";
+import { AuthconText } from "../../provider/Authprovider";
+import { EmailAuthCredential } from "firebase/auth";
 
 const Register = () => {
-    const handleRegister = e =>{
+    const { createUser } = useContext(AuthconText)
+    const handleRegister = e => {
         e.preventDefault();
+        const form = new FormData(e.currentTarget);
+        const name = form.get('name');
+        const email = form.get('email');
+        const password = form.get('password');
+        console.log(name, email, password);
+
+        // create user
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user)
+            })
+            .catch(error => {
+                console.error(error)
+            })
+
     }
     return (
         <div>
             <Navbar></Navbar>
             <div>
-            <h2 className="text-3xl m-10 text-center">Plese Register</h2>
+                <h2 className="text-3xl m-10 text-center">Plese Register</h2>
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleRegister} className="card-body">
