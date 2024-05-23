@@ -2,12 +2,14 @@ import Header from "../shared/header/Header";
 import LeftSideNav from "../shared/leftsidenav/LeftSideNav";
 import Navbar from "../shared/navbar/Navbar";
 import RightSideNav from "../shared/rightsidenav/RightSideNav";
+import BreakingNews from "./BreakingNews";
 
 
 const Home = () => {
     return (
         <div>
             <Header></Header>
+            <BreakingNews></BreakingNews>
             <Navbar></Navbar>
             <div className="border grid grid-cols-1 lg:grid-cols-4 gap-6">
                 <div className=" border">
