@@ -1,11 +1,12 @@
+
 import { useContext } from "react";
 import Navbar from "../shared/navbar/Navbar";
 import { Link } from "react-router-dom";
-import { AuthconText } from "../../provider/Authprovider";
-import { EmailAuthCredential } from "firebase/auth";
+import { AuthContext } from "../../provider/Authprovider";
+
 
 const Register = () => {
-    const { createUser } = useContext(AuthconText)
+    const { createUser } = useContext(AuthContext)
     const handleRegister = e => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
